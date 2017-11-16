@@ -13,7 +13,10 @@ public class WordHistory extends JavaPlugin{
     @Override
     public void onEnable(){
         plugin = this;
+
+
     }
+
 
     public static WordHistory getPlugin (){
         return plugin;
