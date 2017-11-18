@@ -1,5 +1,8 @@
 package me.perotin.wordhistory.players;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -57,5 +60,15 @@ public class WordPlayer {
 
     public void setGrammar(boolean grammar) {
         this.grammar = grammar;
+    }
+
+    public Player getPlayer(){
+        if(Bukkit.getPlayer(uuid) != null){
+            return Bukkit.getPlayer(uuid);
+        } else {
+            throw new NullPointerException("Player is null for WordPlayer!");
+
+        }
+
     }
 }

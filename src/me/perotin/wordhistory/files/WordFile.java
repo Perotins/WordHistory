@@ -1,6 +1,7 @@
 package me.perotin.wordhistory.files;
 
 import me.perotin.wordhistory.WordHistory;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -62,6 +63,8 @@ public class WordFile {
     public void set(String path, Object value){
         configuration.set(path, value);
     }
+
+    public String getString(String path) { return ChatColor.translateAlternateColorCodes('&', configuration.getString(path));}
 
 
 
