@@ -46,6 +46,24 @@ public class WordMenu {
 
     }
 
+    public void showPhrasesMenu(){
+        //TODO
+    }
+
+    public void showGrammarMenu(){
+        //TODO
+    }
+
+    public void showPreviousCommandsMenu(){
+        //TODO
+    }
+
+    public void showPlaceholdersMenu(){
+        //TODO
+    }
+
+
+
 
 
 

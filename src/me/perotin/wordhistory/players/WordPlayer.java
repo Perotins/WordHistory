@@ -1,5 +1,6 @@
 package me.perotin.wordhistory.players;
 
+import me.perotin.wordhistory.WordHistory;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -70,5 +71,14 @@ public class WordPlayer {
 
         }
 
+    }
+
+    public static WordPlayer getWordPlayer(UUID uuid){
+        for(WordPlayer wordPlayer : WordHistory.getPlugin().getPlayers()){
+            if(wordPlayer.getUuid().equals(uuid)){
+                return wordPlayer;
+            }
+        }
+        return null;
     }
 }
