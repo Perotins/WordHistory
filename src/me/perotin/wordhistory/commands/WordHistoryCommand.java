@@ -21,8 +21,10 @@ public class WordHistoryCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
-            WordPlayer wordPlayer = WordPlayer.getWordPlayer(player.getUniqueId());
+            //WordPlayer wordPlayer = WordPlayer.getWordPlayer(player.getUniqueId());
             if(player.hasPermission("wordhistory.use")){
+                WordPlayer wordPlayer = new WordPlayer(player.getName(), player.getUniqueId());
+                plugin.getPlayers().add(wordPlayer);
                 new WordMenu(wordPlayer).showMainMenu();
 
 

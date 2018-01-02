@@ -10,3 +10,9 @@
 # If you ever need any asistance, I am available through spigot or discord (Perotin#3447)
 
 
+# how many messages should we track before we remove them? multiples of 40 would be best
+max-messages: 120
+
+
+# how many commands should we track before we remove them? multiples of 40 would be best
+max-commands: 120

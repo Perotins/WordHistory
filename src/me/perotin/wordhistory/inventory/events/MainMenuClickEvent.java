@@ -34,11 +34,13 @@ public class MainMenuClickEvent implements Listener {
                 ItemStack clicked = event.getCurrentItem();
                 WordMenu wordMenu = new WordMenu(wordPlayer);
                 if(clicked != null && clicked.getType() != Material.AIR){
+
                       switch (clicked.getType()) {
-                          case BOOK_AND_QUILL:   wordMenu.showPhrasesMenu();
-                          case PAPER: wordMenu.showPreviousCommandsMenu();
-                          case INK_SACK: wordMenu.showGrammarMenu();
-                          case ANVIL: wordMenu.showPlaceholdersMenu();
+
+                          case BOOK_AND_QUILL:   wordMenu.showPhrasesMenu(); break;
+                          case PAPER: wordMenu.showPreviousCommandsMenu(); break;
+                          case INK_SACK: wordMenu.showGrammarMenu(); break;
+                          case BOOK: wordMenu.showPreviousMessagesMenu(); break;
                       }
                 }
             }

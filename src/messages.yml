@@ -10,6 +10,9 @@
 
 # If you ever need any assistance, I am available through spigot or discord (Perotin#3447)
 
+# Placeholders --
+# When you see a '/' in a default message, this is used to indicate a newline. Only use these where the backslash appears by
+# default
 
 
 # inventory related messages
@@ -18,7 +21,66 @@ main-menu-title: "Word Menu Options"
 
 phrases-display-name: "&ePhrases & Shortcuts"
 
-previous-commands-display-name: "&bPrevious commands & messages"
+previous-commands-display-name: "&bPrevious commands"
 
+grammar-check-display-name: "&aGrammar"
+
+previous-messages-display-name: "&dPrevious messages"
+
+go-back: "&ePrevious page"
+
+go-back-lore: "&7&oClick to go to the previous page!"
+
+
+# phrases menu
+
+phrases-menu-title: "Phrases & Placeholders"
+
+add-phrase-name: "&aAdd phrase"
+
+add-phrase-lore: "&7&oClick to add a phrase!"
+
+delete-phrase-name: "&cDelete phrase"
+
+delete-phrase-lore: "&7&oRight click a phrase to delete it!"
+
+# grammar menu
+grammar-menu-title: "Grammar Settings"
+
+punctuation-display: "&e&lPunctuation: $misc$"
+
+toggle-punctuation: "&7&oClick to toggle punctuation!"
+
+commas-display: "&e&lCommas: $misc$"
+
+toggle-commas: "&7&oClick to toggle commas!"
+
+capitalize-display: "&e&lCapitalization: $misc$"
+
+toggle-capitalize: "&7&oClick to toggle capitalization!"
+
+replacement-display: "&e&lWord Replacement: $misc$"
+
+toggle-replacement: "&7&oClick to toggle word replacement!"
+
+
+
+# previous commands & messages
+
+previous-commands-menu-title: "Previous commands"
+
+previous-messages-menu-title: "Previous messages"
+
+# adding a phrase & deleting a phrase
+
+type-shortcut-key: "&9(&7Phrases&9) &7Type in the shortcut key that will be used to indicate when you want to use a phrase!"
+
+type-phrase: "&9(&7Phrases&9) &7Now type in the phrase that should be used when you use the shortcut that you just provided. /
+&9(&7Placeholders&9) &7Put a % (percentage sign) for where you want to use a placeholder that will take in your input!"
+
+# miscellaneous
+enabled: "&aenabled"
+
+disabled: "&cdisabled"
 
 click-to-expand: "&7&oClick to expand!"

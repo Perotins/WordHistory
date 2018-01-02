@@ -3,6 +3,12 @@ package me.perotin.wordhistory;
 import me.perotin.wordhistory.commands.WordHistoryCommand;
 import me.perotin.wordhistory.files.WordFile;
 import me.perotin.wordhistory.inventory.events.MainMenuClickEvent;
+import me.perotin.wordhistory.inventory.events.commands.CommandsClickEvent;
+import me.perotin.wordhistory.inventory.events.commands.CommandsCollectEvent;
+import me.perotin.wordhistory.inventory.events.grammar.GrammarClickEvent;
+import me.perotin.wordhistory.inventory.events.messages.CollectMessagesEvent;
+import me.perotin.wordhistory.inventory.events.messages.MessagesClickEvent;
+import me.perotin.wordhistory.inventory.events.phrases.PhrasesMenuEvent;
 import me.perotin.wordhistory.players.WordPlayer;
 
 import org.bukkit.Bukkit;
@@ -12,6 +18,10 @@ import java.util.HashSet;
 
 /*
     Created November 11, 2017 by Perotin
+
+    TODO
+    1. Fix messages/commands menu and make them scrolling, and more dynamic
+
  */
 public class WordHistory extends JavaPlugin{
 
@@ -27,7 +37,15 @@ public class WordHistory extends JavaPlugin{
         WordFile.loadFiles();
 
         getCommand("wordhistory").setExecutor(new WordHistoryCommand(this));
+
         Bukkit.getPluginManager().registerEvents(new MainMenuClickEvent(this), this);
+        Bukkit.getPluginManager().registerEvents(new GrammarClickEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new PhrasesMenuEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new MessagesClickEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new CollectMessagesEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new CommandsClickEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new CommandsCollectEvent(), this);
+
     }
 
 

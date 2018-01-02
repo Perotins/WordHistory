@@ -11,6 +11,7 @@ import java.io.*;
 import static me.perotin.wordhistory.files.WordFile.WordFileType.MESSAGES;
 import static me.perotin.wordhistory.files.WordFile.WordFileType.PLAYERS;
 
+
 public class WordFile {
 
     private File file;
@@ -24,12 +25,12 @@ public class WordFile {
         if (type == MESSAGES) {
             file = new File(WordHistory.getPlugin().getDataFolder(), "messages.yml");
             configuration = YamlConfiguration.loadConfiguration(file);
-            type = MESSAGES;
+            this.type = MESSAGES;
         }
         if (type == PLAYERS) {
             file = new File(WordHistory.getPlugin().getDataFolder(), "players.yml");
             configuration = YamlConfiguration.loadConfiguration(file);
-            type = PLAYERS;
+            this.type = PLAYERS;
         }
 
 
@@ -137,6 +138,11 @@ public class WordFile {
         PLAYERS, MESSAGES,
 
     }
+
+
+
+
+
 
 
 
