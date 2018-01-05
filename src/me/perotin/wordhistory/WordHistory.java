@@ -20,8 +20,7 @@ import java.util.HashSet;
     Created November 11, 2017 by Perotin
 
     TODO
-    1. Fix messages/commands menu and make them scrolling, and more dynamic
-
+    1. Finished making scrolling obj, now implement it with messages and commands object
  */
 public class WordHistory extends JavaPlugin{
 
