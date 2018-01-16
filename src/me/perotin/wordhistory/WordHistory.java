@@ -2,6 +2,7 @@ package me.perotin.wordhistory;
 
 import me.perotin.wordhistory.commands.WordHistoryCommand;
 import me.perotin.wordhistory.files.WordFile;
+import me.perotin.wordhistory.inventory.events.InventoryPagingEvent;
 import me.perotin.wordhistory.inventory.events.MainMenuClickEvent;
 import me.perotin.wordhistory.inventory.events.commands.CommandsClickEvent;
 import me.perotin.wordhistory.inventory.events.commands.CommandsCollectEvent;
@@ -20,7 +21,7 @@ import java.util.HashSet;
     Created November 11, 2017 by Perotin
 
     TODO
-    1. Finished making scrolling obj, now implement it with messages and commands object
+    1. Finish making paging event and test
  */
 public class WordHistory extends JavaPlugin{
 
@@ -44,6 +45,7 @@ public class WordHistory extends JavaPlugin{
         Bukkit.getPluginManager().registerEvents(new CollectMessagesEvent(), this);
         Bukkit.getPluginManager().registerEvents(new CommandsClickEvent(), this);
         Bukkit.getPluginManager().registerEvents(new CommandsCollectEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new InventoryPagingEvent(), this);
 
     }
 

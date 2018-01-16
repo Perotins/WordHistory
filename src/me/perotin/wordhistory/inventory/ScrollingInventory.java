@@ -17,28 +17,44 @@ public class ScrollingInventory {
 
     //TODO scrolling inv object
 
-    private ArrayList<Inventory> pages;
+    public ArrayList<Inventory> pages;
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
     private Player clicker;
-    private static HashMap<UUID, ScrollingInventory> users;
+    public static HashMap<UUID, ScrollingInventory> users = new HashMap<>();
     private ArrayList<ItemStack> items;
     private WordMenuType type;
     private WordFile messages = new WordFile(WordFile.WordFileType.MESSAGES);
+    private int pageNumber;
 
 
 
-    public ScrollingInventory(Player clicker, ArrayList<Inventory> pages, WordMenuType type){
+     ScrollingInventory(Player clicker, ArrayList<ItemStack> items, WordMenuType type){
         this.clicker = clicker;
-        this.pages = pages;
+        this.pages = new ArrayList<>();
         this.type = type;
+        this.items = items;
+        pageNumber = 0;
+
+
     }
 
-    public void showInventory(){
+     void showInventory(){
         //TODO
         Inventory inventory = getBlankPage();
         int slot = 9;
             for(ItemStack item : items){
                 // slot is taken, go to the next slot
-                if(inventory.getItem(slot) != null || inventory.getItem(slot).getType() != Material.AIR) slot++;
+               if (inventory.getItem(slot) != null) slot++;
+                //if(inventory.getItem(slot).getType() != Material.AIR ) slot++;
+
                 if(inventory.contains(item)) continue;
 
                 inventory.setItem(slot, item);
@@ -115,7 +131,7 @@ public class ScrollingInventory {
         return blankPage;
     }
 
-    private enum WordMenuType{
+    public enum WordMenuType{
         COMMANDS, MESSAGES
     }
 

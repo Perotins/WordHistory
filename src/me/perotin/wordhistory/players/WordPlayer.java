@@ -5,6 +5,7 @@ import me.perotin.wordhistory.CommandMessage;
 import me.perotin.wordhistory.WordHistory;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
@@ -85,7 +86,7 @@ public class WordPlayer {
         this.name = name;
     }
 
-    public UUID getUuid() {
+    private UUID getUuid() {
         return uuid;
     }
 
@@ -141,6 +142,21 @@ public class WordPlayer {
         this.wordReplacement = wordReplacement;
     }
 
+
+    public ArrayList<ItemStack> getMessageItems(){
+        ArrayList<ItemStack> items = new ArrayList<>();
+        for(ChatMessage item : getMessages()){
+            items.add(item.getItem());
+        }
+        return items;
+    }
+    public ArrayList<ItemStack> getCommandItems(){
+        ArrayList<ItemStack> items = new ArrayList<>();
+        for(CommandMessage item : getCommands()){
+            items.add(item.getItem());
+        }
+        return items;
+    }
 
 
 

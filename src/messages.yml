@@ -98,3 +98,7 @@ enabled: "&aenabled"
 disabled: "&cdisabled"
 
 click-to-expand: "&7&oClick to expand!"
+
+no-permission: "&4>> &cNo permission to do this!"
+
+player-only: "&4>> &cYou must be a player to do this!"

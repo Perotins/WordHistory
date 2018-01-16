@@ -1,7 +1,6 @@
 package me.perotin.wordhistory.inventory;
 
-import me.perotin.wordhistory.ChatMessage;
-import me.perotin.wordhistory.CommandMessage;
+
 import me.perotin.wordhistory.files.WordFile;
 import me.perotin.wordhistory.players.WordPlayer;
 import me.perotin.wordhistory.utils.ItemUtils;
@@ -9,22 +8,27 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+
 
 public class WordMenu {
 
 
     private WordPlayer player;
-    private ArrayList<Inventory> pages;
-   // private int pageNumber;
+    private ScrollingInventory messages;
+    private ScrollingInventory commands;
     private WordFile wordFile;
 
     public WordMenu(WordPlayer player){
         this.player = player;
-        this.pages = new ArrayList<>();
-       // this.pageNumber = 0;
+        this.messages = new ScrollingInventory(player.getPlayer(), player.getMessageItems(), ScrollingInventory.WordMenuType.MESSAGES);
+        this.commands = new ScrollingInventory(player.getPlayer(), player.getCommandItems(), ScrollingInventory.WordMenuType.COMMANDS);
+
+
         this.wordFile = new WordFile(WordFile.WordFileType.MESSAGES);
+
     }
 
     public void showMainMenu(){
@@ -118,43 +122,19 @@ public class WordMenu {
     }
 
     public void showPreviousCommandsMenu(){
-        Inventory inventory = Bukkit.createInventory(null, 54, wordFile.getString("previous-commands-menu-title"));
-        int slot = 9;
-        if(!player.getCommands().isEmpty()) {
-            for (CommandMessage command : player.getCommands()) {
-                if (slot > 54) {
-                    break;
-                }
-                inventory.setItem(slot, ItemUtils.createItem(ChatColor.YELLOW + command.getMessage(), ChatColor.GRAY + command.getDate(), Material.PAPER));
-                slot++;
-            }
-        }
-        player.getPlayer().openInventory(inventory);
-
-
+      messages.showInventory();
     }
 
     public void showPreviousMessagesMenu(){
-        Inventory inventory = Bukkit.createInventory(null, 54, wordFile.getString("previous-messages-menu-title"));
-        int slot = 9;
-        if (player == null) Bukkit.getConsoleSender().sendMessage("null");
-        if(!player.getMessages().isEmpty()) {
-            for (ChatMessage message : player.getMessages()) {
-                if (slot > 54) {
-                    break;
-                }
-                inventory.setItem(slot, ItemUtils.createItem(ChatColor.YELLOW + message.getMessage(), ChatColor.GRAY + message.getDate(), Material.PAPER));
-                slot++;
-            }
-
-        }
-        player.getPlayer().openInventory(inventory);
-
+        commands.showInventory();
     }
 
 
+    public ScrollingInventory getMessages() {
+        return messages;
+    }
 
-
-
-
+    public ScrollingInventory getCommands() {
+        return commands;
+    }
 }
