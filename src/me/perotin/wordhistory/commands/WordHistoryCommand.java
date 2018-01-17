@@ -32,17 +32,7 @@ public class WordHistoryCommand implements CommandExecutor {
             if(player.hasPermission("wordhistory.use")){
                 WordPlayer wordPlayer = new WordPlayer(player.getName(), player.getUniqueId());
                 plugin.getPlayers().add(wordPlayer);
-                ArrayList<ItemStack> messages = new ArrayList<>();
-                ArrayList<ItemStack> commands = new ArrayList<>();
 
-                // getting items and storing in a list
-                for(ChatMessage message : wordPlayer.getMessages()){
-                    messages.add(message.getItem());
-                }
-
-                for(CommandMessage commandMessage : wordPlayer.getCommands()){
-                    commands.add(commandMessage.getItem());
-                }
 
                 new WordMenu(wordPlayer).showMainMenu();
 

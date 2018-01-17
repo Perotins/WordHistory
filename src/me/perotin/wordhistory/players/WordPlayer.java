@@ -4,6 +4,7 @@ import me.perotin.wordhistory.ChatMessage;
 import me.perotin.wordhistory.CommandMessage;
 import me.perotin.wordhistory.WordHistory;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -148,6 +149,7 @@ public class WordPlayer {
         for(ChatMessage item : getMessages()){
             items.add(item.getItem());
         }
+
         return items;
     }
     public ArrayList<ItemStack> getCommandItems(){
@@ -155,6 +157,7 @@ public class WordPlayer {
         for(CommandMessage item : getCommands()){
             items.add(item.getItem());
         }
+
         return items;
     }
 
