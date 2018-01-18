@@ -98,14 +98,14 @@ public class ScrollingInventory {
         switch (type){
             case MESSAGES:
                 blankPage = Bukkit.createInventory(null, 54, messages.getString("previous-messages-menu-title"));
-                blankPage.setItem(1, ItemUtils.createItem(messages.getString("delete-message-info"), "", Material.REDSTONE_BLOCK));
-                blankPage.setItem(0, ItemUtils.createItem(messages.getString("copy-message-info"), "", Material.EMERALD_BLOCK));
+                blankPage.setItem(1, ItemUtils.createItem(messages.getString("delete-message-info"),  Material.REDSTONE_BLOCK));
+                blankPage.setItem(0, ItemUtils.createItem(messages.getString("copy-message-info"),  Material.EMERALD_BLOCK));
                 break;
 
             case COMMANDS:
                 blankPage = Bukkit.createInventory(null, 54, messages.getString("previous-commands-menu-title"));
-                blankPage.setItem(1, ItemUtils.createItem(messages.getString("delete-command-info"), "", Material.REDSTONE_BLOCK));
-                blankPage.setItem(0, ItemUtils.createItem(messages.getString("copy-command-info"), "", Material.EMERALD_BLOCK));
+                blankPage.setItem(1, ItemUtils.createItem(messages.getString("delete-command-info"),  Material.REDSTONE_BLOCK));
+                blankPage.setItem(0, ItemUtils.createItem(messages.getString("copy-command-info"),  Material.EMERALD_BLOCK));
         }
 
 

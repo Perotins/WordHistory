@@ -12,6 +12,7 @@ import me.perotin.wordhistory.inventory.events.messages.MessagesClickEvent;
 import me.perotin.wordhistory.inventory.events.phrases.PhrasesMenuEvent;
 import me.perotin.wordhistory.players.WordPlayer;
 
+import me.perotin.wordhistory.players.chat.UsePhraseEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,7 +22,7 @@ import java.util.HashSet;
     Created November 11, 2017 by Perotin
 
     TODO
-    1. Finish making paging event and test
+    1.
  */
 public class WordHistory extends JavaPlugin{
 
@@ -46,6 +47,7 @@ public class WordHistory extends JavaPlugin{
         Bukkit.getPluginManager().registerEvents(new CommandsClickEvent(), this);
         Bukkit.getPluginManager().registerEvents(new CommandsCollectEvent(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryPagingEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new UsePhraseEvent(), this);
 
     }
 

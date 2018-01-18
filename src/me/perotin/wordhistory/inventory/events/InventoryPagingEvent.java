@@ -41,6 +41,7 @@ public class InventoryPagingEvent implements Listener {
 
 
                             }
+                            return;
 
 
                         }
@@ -65,6 +66,7 @@ public class InventoryPagingEvent implements Listener {
                                 // go to main page if they click "go back" on first page
                                 new WordMenu(WordPlayer.getWordPlayer(clicker.getUniqueId())).showMainMenu();
                             }
+
 
 
                         }

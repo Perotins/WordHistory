@@ -23,6 +23,15 @@ public class ItemUtils {
         return itemStack;
     }
 
+    public static ItemStack createItem(String name, Material material) {
+        ItemStack itemStack = new ItemStack(material);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(name);
+        itemStack.setItemMeta(itemMeta);
+
+        return itemStack;
+    }
+
     public static ItemStack createItemWithBigLore(String name, ArrayList<String> lores, Material material) {
         ItemStack itemStack = new ItemStack(material);
         ItemMeta itemMeta = itemStack.getItemMeta();
