@@ -22,7 +22,9 @@ import java.util.HashSet;
     Created November 11, 2017 by Perotin
 
     TODO
-    1.
+    1. Make placeholders work with more than 1 placeholder
+    2. Add optional cooldown on using placeholders
+    3. Look into dictionary / grammar apis to help with word searches
  */
 public class WordHistory extends JavaPlugin{
 

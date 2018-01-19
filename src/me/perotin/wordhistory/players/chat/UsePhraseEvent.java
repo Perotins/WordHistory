@@ -1,45 +1,45 @@
 package me.perotin.wordhistory.players.chat;
 
 import me.perotin.wordhistory.players.WordPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.util.ArrayList;
 
 public class UsePhraseEvent implements Listener {
 
     @EventHandler
-    public void onUsePhrase(AsyncPlayerChatEvent event){
+    public void onUsePhrase(AsyncPlayerChatEvent event) {
         String possiblePhrase = event.getMessage();
         Player phraser = event.getPlayer();
         WordPlayer wordPlayer = WordPlayer.getWordPlayer(phraser.getUniqueId());
 
-        if(possiblePhrase.contains(":")){
+        if (possiblePhrase.contains(":")) {
             // in the realm of potentially using a phrase
-            if(!wordPlayer.getPhrases().isEmpty()) {
+            if (!wordPlayer.getPhrases().isEmpty()) {
                 for (String key : wordPlayer.getPhrases().keySet()) {
-                    if(possiblePhrase.toLowerCase().contains(key.toLowerCase().split(":")[0] + ":")){
+                    if (possiblePhrase.toLowerCase().contains(key.toLowerCase().split(":")[0] + ":")) {
                         // definitely a phrase
                         // check for placeholders
                         String value = wordPlayer.getPhrases().get(key);
+                        if (value.contains("%")) {
 
-                        //TODO
-                        // redo below as logic is wrong, value contains the placeholders not the key!!
-
-                        if(possiblePhrase.split(":")[1].contains("%")){
-                            // placeholders in place
-                            ArrayList<Integer> placeholderIndexes = new ArrayList<>();
-
-                            for(int x = 0; x <= key.split(":")[1].length(); x++){
-                                char character = key.split(":")[1].charAt(x);
-                                if(character == '%'){
-                                    // gather indexes to use later for replacement
-                                    placeholderIndexes.add(key.split(":")[1].indexOf(character));
+                            //TODO
+                            // make it work with more than 1 placeholder
+                            if(possiblePhrase.split(":").length == 2) {
+                                String placeholders = possiblePhrase.split(":")[1];
+                                for(String x : placeholders.split(":")){
+                                    value = value.replace("%", x);
                                 }
-                            }
 
+                                event.setMessage(value);
+                            } else {
+                                // incorrect syntax so assume it isn't a phrase they were using
+                                // maybe send inquisitive message if they were trying to use a phrase
+                                return;
+                            }
 
                         } else {
                             // no placeholders, just grab value and send it as them
@@ -49,6 +49,6 @@ public class UsePhraseEvent implements Listener {
                 }
             }
         }
-
     }
+
 }
