@@ -4,6 +4,10 @@ import me.perotin.wordhistory.ChatMessage;
 import me.perotin.wordhistory.files.WordFile;
 import me.perotin.wordhistory.inventory.WordMenu;
 import me.perotin.wordhistory.players.WordPlayer;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -29,23 +33,35 @@ public class MessagesClickEvent implements Listener {
                 //TODO handle events
                 ItemStack item = event.getCurrentItem();
                 event.setCancelled(true);
-                if(event.getClick() == ClickType.RIGHT && item.getType() == Material.PAPER){
-                    // deleting a message
-                    String message = ChatColor.stripColor(item.getItemMeta().getDisplayName());
-                    String date = ChatColor.stripColor(item.getItemMeta().getLore().get(0));
-                   // Bukkit.broadcastMessage(date);
+                if(item.getType() == Material.PAPER){
+                    if(event.getClick() == ClickType.RIGHT) {
+                        // deleting a message
+                        String message = ChatColor.stripColor(item.getItemMeta().getDisplayName());
+                        String date = ChatColor.stripColor(item.getItemMeta().getLore().get(0));
+                        // Bukkit.broadcastMessage(date);
 
-                    ChatMessage remove = new ChatMessage(message, date);
-                    for(ChatMessage chatMessage : wordPlayer.getMessages()){
-                        if(chatMessage.equals(remove)){
-                            wordPlayer.getMessages().remove(chatMessage);
+                        ChatMessage remove = new ChatMessage(message, date);
+                        for (ChatMessage chatMessage : wordPlayer.getMessages()) {
+                            if (chatMessage.equals(remove)) {
+                                wordPlayer.getMessages().remove(chatMessage);
+                            }
                         }
+
+
+                        WordMenu menu = new WordMenu(wordPlayer);
+
+                        menu.showPreviousMessagesMenu();
+                    } else if (event.getClick() == ClickType.LEFT) {
+                        TextComponent message = new TextComponent(messages.getString("click-to-copy"));
+                        // make message configurable
+                        message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, ChatColor.stripColor(item.getItemMeta().getDisplayName())));
+                        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(item.getItemMeta().getDisplayName()).create()));
+                        player.closeInventory();
+                        player.sendMessage(" ");
+                        player.spigot().sendMessage(message);
+
+
                     }
-
-
-                    WordMenu menu = new WordMenu(wordPlayer);
-
-                    menu.showPreviousMessagesMenu();
                 }
             }
         }

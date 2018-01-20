@@ -122,11 +122,11 @@ public class WordMenu {
     }
 
     public void showPreviousCommandsMenu(){
-      messages.showInventory();
+      commands.showInventory();
     }
 
     public void showPreviousMessagesMenu(){
-        commands.showInventory();
+        messages.showInventory();
     }
 
 
