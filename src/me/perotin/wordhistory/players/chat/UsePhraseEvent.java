@@ -15,7 +15,10 @@ public class UsePhraseEvent implements Listener {
         String possiblePhrase = event.getMessage();
         Player phraser = event.getPlayer();
         WordPlayer wordPlayer = WordPlayer.getWordPlayer(phraser.getUniqueId());
+        int placeholderAmount = 0;
 
+
+        int placeholdersInserted = 0;
         if (possiblePhrase.contains(":")) {
             // in the realm of potentially using a phrase
             if (!wordPlayer.getPhrases().isEmpty()) {
@@ -25,13 +28,30 @@ public class UsePhraseEvent implements Listener {
                         // check for placeholders
                         String value = wordPlayer.getPhrases().get(key);
                         if (value.contains("%")) {
+                            for(Character x : value.toCharArray()){
+                                if(x == '%') placeholderAmount++;
+                            }
+                            // debugging, ignore messiness
 
                             //TODO
                             // make it work with more than 1 placeholder
                             if(possiblePhrase.split(":").length == 2) {
-                                String placeholders = possiblePhrase.split(":")[1];
-                                for(String x : placeholders.split(":")){
-                                    value = value.replace("%", x);
+                                String placeholders = possiblePhrase.split(":")[1].trim();
+                                for(Character placeholder : value.toCharArray()) {
+
+                                    if(placeholder.toString().equals("%")) {
+
+                                        for (String x : placeholders.split(" ")) {
+                                            if (placeholdersInserted <= placeholderAmount) {
+                                                // still placeholders left
+                                                // next line could potentially cause bugs
+                                                if(value.contains(x)) continue;
+                                                value = value.replaceFirst(placeholder.toString(), x);
+                                                placeholdersInserted++;
+                                            }
+
+                                        }
+                                    }
                                 }
 
                                 event.setMessage(value);
