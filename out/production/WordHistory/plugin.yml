@@ -1,0 +1,9 @@
+name: WordHistory
+author: Perotin
+main: me.perotin.wordhistory.WordHistory
+version: 1.0
+commands:
+   wordhistory:
+      aliases: [wh, words]
+      usage: /wordhistory
+      description: Opens the main menu
