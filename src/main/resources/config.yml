@@ -1,0 +1,36 @@
+# |
+# | WORD HISTORY
+# | CONFIGURATION
+# |
+# |
+
+# Hello, thank you for using WordHistory
+# Here you can find the configurational aspects of this plugin
+
+# If you ever need any asistance, I am available through spigot or discord (Perotin#3447)
+
+
+# how many messages should we track before we remove them? multiples of 40 would be best
+max-messages: 120
+
+
+# how many commands should we track before we remove them? multiples of 40 would be best
+max-commands: 120
+
+
+# Punctuation
+
+# words that when used WordHistory will put a question mark at the end
+question-words:
+   - "why"
+   - "when"
+   - "how"
+   - "who"
+   - "which"
+   - "where"
+   - "what"
+
+# phrases when used together to indicate a question
+
+
+
